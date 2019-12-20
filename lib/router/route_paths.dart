@@ -1,0 +1,10 @@
+const String splashRoute= 'splashRoute';
+const String loginRoute = 'loginRoute';
+const String registerRoute = 'registerRoute';
+const String mainRoute = 'mainRoute';
+const String welcomeRoute = 'welcomeRoute';
+const String onBoardingRoute = 'onBoardingRoute';
+const String passwordRecoveryRoute = "passwordRecoveryRoute";
+const String poolDetailsRoute = "poolDetailsRoute";
+const String addPoolRoute = 'addPoolRoute';
+const String aboutPoolRoute = 'aboutPoolRoute';
