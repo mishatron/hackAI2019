@@ -101,11 +101,11 @@ class AuthPresenter extends BasePresenter {
   Future<ClientModel> checkUserExistence(
       String id, ClientModel curModel) async {
     var model = await _remoteDataSource.getUser(id);
-   /* if (!model.isSuccess()) {
+    if (model == null) {
       await _remoteDataSource.createUser(curModel);
       return curModel;
     } else {
-      return model.getApiData();
-    }*/
+      return model;
+    }
   }
 }

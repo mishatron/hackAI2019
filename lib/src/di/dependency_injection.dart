@@ -21,9 +21,9 @@ class InjectorDI {
     flavor = flavor;
 
     if (flavor == Flavor.DEV) {
-      DioManager.BASE_URL = "https://api.matchpool.com/api/";
+      DioManager.BASE_URL = "http://opendatavinnytsia.azurewebsites.net/api/";
     } else if (flavor == Flavor.PROD) {
-      DioManager.BASE_URL = "https://api.matchpool.com/api/";
+      DioManager.BASE_URL = "http://opendatavinnytsia.azurewebsites.net/api/";
     }
 
     injector.registerLazySingleton(() => NavigationService());
