@@ -5,6 +5,7 @@ import 'package:hackai/src/core/localization/app_localizations.dart';
 import 'package:hackai/src/core/ui/base_statefull_screen.dart';
 import 'package:hackai/src/core/ui/base_statefull_widget.dart';
 import 'package:hackai/src/view/custom/bottom_menu/fancy_bottom_navigation.dart';
+import 'package:hackai/src/view/map/MapScreen.dart';
 import 'package:hackai/src/view/profile/profile_screen.dart';
 import 'package:hackai/src/view/upload/upload_screen.dart';
 
@@ -19,7 +20,7 @@ class _MainScreenState extends BaseStatefulScreen<MainScreen> {
   ValueNotifier<int> _currentIndex = ValueNotifier(0);
   List<Widget> _children = [
     UploadScreen(),
-    Container(),
+    MapScreen(),
     ProfileScreen(),
   ];
 

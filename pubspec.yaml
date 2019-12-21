@@ -38,6 +38,7 @@ dependencies:
   rxdart: ^0.22.6
   sprintf: ^4.0.2
   image_picker: ^0.6.2+3
+  google_maps_flutter: ^0.5.21+8
   mlkit:
     path: "lib/src/libs/flutter_mlkit-master"
 

@@ -18,7 +18,7 @@ class UploadScreen extends BaseStatefulWidget {
 class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
   @override
   Widget buildAppbar() {
-    return getAppBar(context, "Покращи свій датасет");
+    return getAppBar(context, "Покращи світовий датасет");
   }
 
   @override
