@@ -10,8 +10,8 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   Future<ClientModel> getUser(String id) async {
     return await DioManager().get('user/' + id).then((response) {
       ClientModel model;
-      if (response.data['data'] != null)
-        model = ClientModel.fromJson(response.data['data']);
+      if (response.data != null)
+        model = ClientModel.fromJson(response.data);
       return model;
     });
   }

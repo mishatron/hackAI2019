@@ -48,7 +48,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                     children: <Widget>[
                       getUserAvatar("", 80),
                       Text(
-                        "Імя Прізвище",
+                        "Кренцін Михайло",
                         style: getBigFont(),
                       ),
                       Padding(
@@ -63,7 +63,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "email@qq.com",
+                                    "mishatron98@gmail.com",
                                     style: getMidFont(),
                                   ),
                                 )
@@ -121,23 +121,29 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Card(
-                          elevation: 10,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(Icons.exit_to_app),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Вийти",
-                                    style: getMidFont(),
-                                  ),
-                                )
-                              ],
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: (){
+                          injector<NavigationService>().pushAndRemoveAnother(loginRoute);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Card(
+                            elevation: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(Icons.exit_to_app),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Вийти",
+                                      style: getMidFont(),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
