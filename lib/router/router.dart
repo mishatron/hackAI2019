@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackai/router/route_paths.dart' as routes;
 import 'package:hackai/src/view/main/main_screen.dart';
+import 'package:hackai/src/view/profile/categories/categories_screen.dart';
 import 'package:hackai/src/view/splash/splash_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,6 +14,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return getPageRoute(SplashScreen());
     case routes.mainRoute:
       return getPageRoute(MainScreen());
+    case routes.categoriesRoute:
+      return getPageRoute(CategoriesScreen());
 
     default:
       return MaterialPageRoute(

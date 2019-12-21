@@ -184,6 +184,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.3"
+<<<<<<< HEAD
   google_sign_in:
     dependency: "direct main"
     description:
@@ -205,6 +206,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.2+1"
+=======
+  google_maps_flutter:
+    dependency: "direct main"
+    description:
+      name: google_maps_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.21+15"
+>>>>>>> dev
   http:
     dependency: "direct main"
     description:

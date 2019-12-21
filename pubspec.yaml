@@ -43,6 +43,7 @@ dependencies:
   google_sign_in: ^4.1.1
   flutter_facebook_login: ^3.0.0
   firebase_auth: ^0.15.3
+  google_maps_flutter: ^0.5.21+8
 
 dev_dependencies:
   flutter_test:
