@@ -49,7 +49,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                     children: <Widget>[
                       getUserAvatar(user.model.photoUrl, 80),
                       Text(
-                        user.model.name,
+                        user.model.name + " "+user.model.surname,
                         style: getBigFont(),
                       ),
                       Padding(

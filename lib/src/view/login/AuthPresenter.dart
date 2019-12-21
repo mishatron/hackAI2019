@@ -49,7 +49,7 @@ class AuthPresenter extends BasePresenter {
       model.email = user.email;
       model.phone = user.phoneNumber;
 
-      CoreApp.clientModel = await checkUserExistence(user.uid, model);
+//      CoreApp.clientModel = await checkUserExistence(user.uid, model);
       _view.onHideProgress();
       _view.onLogin();
     } else {
@@ -79,7 +79,7 @@ class AuthPresenter extends BasePresenter {
           model.email = profile["email"];
           model.phone = user.phoneNumber;
           model.name = user.displayName;
-          CoreApp.clientModel = await checkUserExistence(user.uid, model);
+//          CoreApp.clientModel = await checkUserExistence(user.uid, model);
           _view.onHideProgress();
           _view.onLogin();
         } else
