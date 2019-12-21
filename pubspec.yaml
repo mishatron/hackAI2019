@@ -38,12 +38,12 @@ dependencies:
   rxdart: ^0.22.6
   sprintf: ^4.0.2
   image_picker: ^0.6.2+3
-  mlkit:
-    path: "lib/src/libs/flutter_mlkit-master"
-  google_sign_in: ^4.1.1
   flutter_facebook_login: ^3.0.0
   firebase_auth: ^0.15.3
   google_maps_flutter: ^0.5.21+8
+  google_sign_in: ^4.1.1
+  mlkit:
+    path: "lib/src/libs/flutter_mlkit-master"
 
 dev_dependencies:
   flutter_test:

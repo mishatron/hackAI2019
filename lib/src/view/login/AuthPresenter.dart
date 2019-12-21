@@ -7,7 +7,6 @@ import 'package:hackai/src/data/sources/remote/remote_datasource.dart';
 import 'package:hackai/src/domain/ClientModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:hackai/main.dart';
-import 'package:hackai/res/values/strings.dart';
 
 import 'package:hackai/src/di/dependency_injection.dart';
 

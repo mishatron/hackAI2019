@@ -22,7 +22,7 @@ class AuthScreen extends BaseStatefulWidget {
 class AuthScreenState extends BaseStatefulScreen implements AuthContract {
   final FacebookLogin facebookSignIn = new FacebookLogin();
   AuthPresenter _presenter;
-  bool _privacyState = false;
+  bool _privacyState = true;
 
   AuthScreenState() {
     _presenter = new AuthPresenter(this);
@@ -34,41 +34,16 @@ class AuthScreenState extends BaseStatefulScreen implements AuthContract {
       children: <Widget>[
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 100),
-            child: Center(child: Image(image: AssetImage('assets/logo.png')))),
+            child: Center(child: Image(image: AssetImage('assets/ic_logo.png')))),
         Column(
           children: <Widget>[
             getAuthButton(
                 Color(0xff4554a6),
                 "assets/facebook.png",
-                "",
+                "Login via Facebook",
                 makeFacebookSign),
             getAuthButton(Color(0xffff3795), "assets/google.png",
-                "", makeGoogleSign),
-            Padding(
-              padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-              child: CheckboxListTile(
-                value: _privacyState,
-                onChanged: _policyChanged,
-                title: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        style: new TextStyle(color: Colors.black),
-                      ),
-                      TextSpan(
-
-                        style: TextStyle(color: Color(0xff5f38f9)),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-//                          launchURL(privacyUrl);
-                          },
-                      ),
-                    ],
-                  ),
-                ),
-                controlAffinity: ListTileControlAffinity.leading,
-              ),
-            ),
+                "Login via Google", makeGoogleSign),
           ],
         ),
       ],
