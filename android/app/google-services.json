@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1052583214225",
+    "firebase_url": "https://hackai-270f8.firebaseio.com",
+    "project_id": "hackai-270f8",
+    "storage_bucket": "hackai-270f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052583214225:android:c31fc1b8115ecdeeab5330",
+        "android_client_info": {
+          "package_name": "com.mishatronic.hackai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052583214225-h8hmkmk63d0q52lqc2hrqa7spm6rtic8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mishatronic.hackai",
+            "certificate_hash": "f144f96824796930513665af934c9f1e079da808"
+          }
+        },
+        {
+          "client_id": "1052583214225-qiae48407gvsnt63es4a5sun2ljoq9ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0uT74rBxnJtkb4UKLaQDZqkcDJ5GZxcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052583214225-qiae48407gvsnt63es4a5sun2ljoq9ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

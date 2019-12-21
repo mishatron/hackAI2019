@@ -9,6 +9,7 @@ import 'package:hackai/router/navigation_service.dart';
 import 'package:hackai/router/router.dart' as router;
 import 'package:hackai/src/core/localization/common_localizations_delegate.dart';
 import 'package:hackai/src/di/dependency_injection.dart';
+import 'package:hackai/src/domain/ClientModel.dart';
 import 'package:hackai/src/view/splash/splash_screen.dart';
 
 import 'src/core/bloc/main_bloc.dart';
@@ -25,6 +26,7 @@ void main() {
 /// widget of app and its configuration
 class CoreApp extends BaseStatelessWidget {
   final mainBloc = MainBloc();
+  static ClientModel clientModel;
 
   CoreApp() {
     mainBloc.add(MainBlocEvent.SET_PORTRAIT);

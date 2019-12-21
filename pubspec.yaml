@@ -37,6 +37,9 @@ dependencies:
   share: ^0.6.3+1
   rxdart: ^0.22.6
   sprintf: ^4.0.2
+  google_sign_in: ^4.1.1
+  flutter_facebook_login: ^3.0.0
+  firebase_auth: ^0.15.3
 
 dev_dependencies:
   flutter_test:
