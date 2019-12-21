@@ -41,14 +41,15 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
             if (state.lastSuccessState is ContentLoadingState) {
               return getProgress(background: false);
             } else if (state.lastSuccessState is ProfileLoadedState) {
+              var user = state.lastSuccessState as ProfileLoadedState;
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: <Widget>[
-                      getUserAvatar("", 80),
+                      getUserAvatar(user.model.photoUrl, 80),
                       Text(
-                        "Імя Прізвище",
+                        user.model.name,
                         style: getBigFont(),
                       ),
                       Padding(
@@ -63,7 +64,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "email@qq.com",
+                                    user.model.email,
                                     style: getMidFont(),
                                   ),
                                 )
@@ -84,7 +85,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "+380954150177",
+                                    user.model.phone,
                                     style: getMidFont(),
                                   ),
                                 )

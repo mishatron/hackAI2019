@@ -21,6 +21,7 @@ class SplashBloc extends BaseBloc<BaseBlocState, DoubleBlocState> {
   DoubleBlocState get initialState => DoubleBlocState(EmptyBlocState(), null);
 
   void getUserIsLoggedIn() {
+    add((SplashRouteState(mainRoute)));
     FirebaseAuth.instance.currentUser().then((user) {
       if (user != null)
         add((SplashRouteState(mainRoute)));

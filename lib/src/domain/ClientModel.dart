@@ -4,8 +4,9 @@ class ClientModel {
   String surname;
   String email;
   String phone;
+  String photoUrl;
 
-  ClientModel({this.id, this.name, this.surname, this.email, this.phone});
+  ClientModel({this.id, this.name, this.surname, this.email, this.phone, this.photoUrl});
 
   ClientModel.fromJson(Map<String, dynamic> json) {
     id = json['Id'];
@@ -13,6 +14,7 @@ class ClientModel {
     surname = json['Surname'];
     email = json['Email'];
     phone = json['Phone'];
+    photoUrl = json['PhotoUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,6 +24,7 @@ class ClientModel {
     data['Surname'] = this.surname;
     data['Email'] = this.email;
     data['Phone'] = this.phone;
+    data['PhotoUrl'] = this.photoUrl;
     return data;
   }
 }
