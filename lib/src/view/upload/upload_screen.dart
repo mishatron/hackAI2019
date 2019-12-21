@@ -32,7 +32,7 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: BaseButton(
-            text: "Додати фото",
+            text: "Перевірити об'єкт",
             onClick: addPhotoHandler,
           ),
         )
@@ -43,10 +43,14 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
   void addPhotoHandler() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    FirebaseVisionTextDetector detector = FirebaseVisionTextDetector.instance;
-
-    var currentLabels = await detector.detectFromPath(image?.path);
-
-    print(currentLabels);
+    FirebaseVisionLabelDetector detector = FirebaseVisionLabelDetector.instance;
+    showProgress();
+    List<VisionLabel> currentLabels = await detector.detectFromPath(image?.path);
+    hideProgress();
+    for(var i in currentLabels){
+      print(i.label);
+      print(i.confidence);
+      print(i.entityID);
+    }
   }
 }

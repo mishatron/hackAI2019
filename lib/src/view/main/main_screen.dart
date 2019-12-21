@@ -42,9 +42,9 @@ class _MainScreenState extends BaseStatefulScreen<MainScreen> {
       circleColor: colorAccent,
       inactiveIconColor: colorAccent,
       tabs: [
-        TabData(iconData: Icons.collections, title: "Screen1"),
-        TabData(iconData: Icons.monetization_on, title: "Screen2"),
-        TabData(iconData: Icons.search, title: "Screen3"),
+        TabData(iconData: Icons.collections, title: "Перевірка"),
+        TabData(iconData: Icons.map, title: "Карта"),
+        TabData(iconData: Icons.account_circle, title: "Профіль"),
       ],
       onTabChangedListener: (position) {
         _currentIndex.value = position;
