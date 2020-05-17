@@ -24,11 +24,38 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
   }
 
   Widget getLabelsList() {
-    return ListView.builder(
+    return ListView.separated(
+        physics: NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            height: 4.0,
+          );
+        },
         shrinkWrap: true,
         itemCount: _viewModel.currentLabels.length,
         itemBuilder: (context, index) {
-          return Text(_viewModel.currentLabels[index].label);
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    _viewModel.currentLabels[index].label,
+                    style: getMidFont(),
+                  ),
+                  Text((_viewModel.currentLabels[index].confidence * 100)
+                          .toInt()
+                          .toString() +
+                      "%", style: getMidFontGrey(),),
+                ],
+              ),
+              LinearProgressIndicator(
+                value: _viewModel.currentLabels[index].confidence,
+                backgroundColor: Colors.grey,
+              )
+            ],
+          );
         });
   }
 
@@ -54,71 +81,75 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
               ],
             );
           } else {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Завантажене фото",
-                    style: getMidFontBold(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: Image.file(
-                            _viewModel.image,
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                  ),
-                  _viewModel.location != null
-                      ? Padding(
-                        padding: const EdgeInsets.only(top: 16.0),
-                        child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.add_location,
-                                color: Colors.red,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Text(
-                                  "Локація",
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Завантажене фото",
+                      style: getMidFontBold(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: AspectRatio(
+                          aspectRatio: 3 / 2,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            child: Image.file(
+                              _viewModel.image,
+                              fit: BoxFit.cover,
+                            ),
+                          )),
+                    ),
+                    _viewModel.location != null
+                        ? Padding(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.add_location,
+                                  color: Colors.red,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16.0),
+                                  child: Text(
+                                    "Локація",
+                                    style: getMidFontBold(),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    "${_viewModel.location.latitude}, ${_viewModel.location.longitude} ",
+                                    style: getMidFont(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : const Offstage(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0, bottom: 32.0),
+                      child: _viewModel.currentLabels != null
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "Результат:",
                                   style: getMidFontBold(),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  "${_viewModel.location.latitude}, ${_viewModel.location.longitude} ",
-                                  style: getMidFont(),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: getLabelsList(),
                                 ),
-                              ),
-
-                            ],
-                          ),
-                      )
-                      : const Offstage(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: _viewModel.currentLabels != null
-                        ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Результат:", style: getMidFontBold(),),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: getLabelsList(),
-                            ),
-                          ],
-                        )
-                        : const Offstage(),
-                  )
-                ],
+                              ],
+                            )
+                          : const Offstage(),
+                    )
+                  ],
+                ),
               ),
             );
           }
