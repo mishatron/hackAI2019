@@ -3,6 +3,7 @@ import 'package:hackai/router/route_paths.dart' as routes;
 import 'package:hackai/src/view/login/AuthScreen.dart';
 import 'package:hackai/src/view/main/main_screen.dart';
 import 'package:hackai/src/view/profile/categories/categories_screen.dart';
+import 'package:hackai/src/view/profile/download/download_screen.dart';
 import 'package:hackai/src/view/splash/splash_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,6 +20,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return getPageRoute(CategoriesScreen());
     case routes.loginRoute:
       return getPageRoute(AuthScreen());
+    case routes.downloadRoute:
+      return getPageRoute(DownloadScreen());
 
     default:
       return MaterialPageRoute(
