@@ -38,7 +38,7 @@ class CoreApp extends BaseStatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle.dark.copyWith(statusBarColor: colorPrimaryDark));
     return BlocProvider(
-      builder: (context) => mainBloc,
+      create: (context) => mainBloc,
       child: BlocListener<MainBloc, MainBlocState>(
           listener: (context, MainBlocState state) {
             if (state is MainOrientationState) {

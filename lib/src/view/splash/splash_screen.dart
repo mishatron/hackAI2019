@@ -40,7 +40,7 @@ class _SplashScreenState extends BaseStatefulScreen<SplashScreen>
 
   Widget buildBody() {
     return BlocProvider(
-      builder: (context) => _bloc,
+      create: (context) => _bloc,
       child: BlocListener<SplashBloc, DoubleBlocState>(
         listener: (context, DoubleBlocState state) {
           if (state.errorState != null) {

@@ -32,7 +32,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
   @override
   Widget buildBody() {
     return BlocProvider(
-      builder: (context) => _bloc,
+      create: (context) => _bloc,
       child: BlocListener(
         bloc: _bloc,
         listener: blocListener,
