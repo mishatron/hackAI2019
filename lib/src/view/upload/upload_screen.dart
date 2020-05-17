@@ -44,15 +44,21 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
                     _viewModel.currentLabels[index].label,
                     style: getMidFont(),
                   ),
-                  Text((_viewModel.currentLabels[index].confidence * 100)
-                          .toInt()
-                          .toString() +
-                      "%", style: getMidFontGrey(),),
+                  Text(
+                    (_viewModel.currentLabels[index].confidence * 100)
+                            .toInt()
+                            .toString() +
+                        "%",
+                    style: getMidFontGrey(),
+                  ),
                 ],
               ),
               LinearProgressIndicator(
                 value: _viewModel.currentLabels[index].confidence,
                 backgroundColor: Colors.grey,
+                valueColor: _viewModel.currentLabels[index].confidence < 0.85
+                    ? AlwaysStoppedAnimation<Color>(Colors.redAccent)
+                    : null,
               )
             ],
           );

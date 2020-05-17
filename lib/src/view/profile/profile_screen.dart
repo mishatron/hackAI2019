@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hackai/res/values/styles.dart';
 import 'package:hackai/router/navigation_service.dart';
 import 'package:hackai/router/route_paths.dart';
+import 'package:hackai/src/core/api/dio_manager.dart';
 import 'package:hackai/src/core/bloc/base_bloc_listener.dart';
 import 'package:hackai/src/core/bloc/base_bloc_state.dart';
 import 'package:hackai/src/core/bloc/content_loading_state.dart';
@@ -49,7 +52,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                     children: <Widget>[
                       getUserAvatar(user.model.photoUrl, 80),
                       Text(
-                        user.model.name + " "+user.model.surname,
+                        user.model.name + " " + user.model.surname,
                         style: getBigFont(),
                       ),
                       Padding(
@@ -124,9 +127,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                       ),
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
-                        onTap: (){
-                          injector<NavigationService>().pushAndRemoveAnother(loginRoute);
-                        },
+                        onTap: _askToLogout,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Card(
@@ -159,6 +160,20 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
         ),
       ),
     );
+  }
+
+  void _askToLogout() {
+    showAlert(context, "Вихід", "Ви впевнені, що хочете вийти", _logout);
+  }
+
+  void _logout() {
+    showProgress();
+    _bloc.logout().timeout(timeout, onTimeout: () {
+      throw SocketException("");
+    }).then((_) {
+      injector<NavigationService>().pushAndRemoveAnother(splashRoute);
+    })
+    .catchError((err)=> onError);
   }
 
   @override

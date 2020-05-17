@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hackai/src/core/bloc/base_bloc.dart';
 import 'package:hackai/src/core/bloc/base_bloc_state.dart';
 import 'package:hackai/src/core/bloc/content_loading_state.dart';
@@ -14,9 +16,10 @@ class ProfileLoadedState extends BaseBlocState {
 }
 
 class ProfileBloc extends BaseBloc<BaseBlocState, DoubleBlocState> {
+  RemoteDataSource _remoteDataSource = injector.get();
 
-  RemoteDataSource _remoteDataSource;
-
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FacebookLogin _facebookSignIn = FacebookLogin();
 
   ProfileBloc() {
     _remoteDataSource = injector.get();
@@ -31,27 +34,26 @@ class ProfileBloc extends BaseBloc<BaseBlocState, DoubleBlocState> {
     try {
       var user = await FirebaseAuth.instance.currentUser();
 
-
       add(ProfileLoadedState(ClientModel(
           id: user.uid,
-          email:
-          "mishatron98gamil.com",
-          phone:
-          "+380954150177",
+          email: "mishatron98gmail.com",
+          phone: "+380954150177",
           name: "Михайло",
-          surname:
-          "Кренцін",
-          photoUrl: ""
-      )));
+          surname: "Кренцін",
+          photoUrl: "")));
 //      var user = await FirebaseAuth.instance.currentUser();
 //      var userAPI = await _remoteDataSource.getUser(user.uid);
 //      add(ProfileLoadedState(userAPI));
-      }
-          catch(err)
-      {
-        print(err);
-        add(ErrorState(err));
-      }
+    } catch (err) {
+      print(err);
+      add(ErrorState(err));
     }
+  }
 
+  Future<Null> logout() async {
+//    await _repository.deleteFCM(MainApp.clientModel.id, fcmToken);
+    await FirebaseAuth.instance.signOut();
+    await _facebookSignIn.logOut();
+    return await _googleSignIn.signOut();
+  }
 }
