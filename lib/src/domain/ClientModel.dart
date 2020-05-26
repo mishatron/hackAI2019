@@ -1,30 +1,30 @@
 class ClientModel {
   String id;
-  String name;
-  String surname;
+  String firstName;
+  String lastName;
   String email;
   String phone;
   String photoUrl;
 
-  ClientModel({this.id, this.name, this.surname, this.email, this.phone, this.photoUrl});
+  ClientModel({this.id, this.firstName, this.lastName, this.email, this.phone, this.photoUrl});
 
   ClientModel.fromJson(Map<String, dynamic> json) {
-    id = json['Id'];
-    name = json['Name'];
-    surname = json['Surname'];
-    email = json['Email'];
-    phone = json['Phone'];
-    photoUrl = json['PhotoUrl'];
+    id = json['id'];
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    email = json['email'];
+    phone = json['phone'];
+    photoUrl = json['photoUrl'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Id'] = this.id;
-    data['Name'] = this.name;
-    data['Surname'] = this.surname;
-    data['Email'] = this.email;
-    data['Phone'] = this.phone;
-    data['PhotoUrl'] = this.photoUrl;
+    data['id'] = this.id;
+    data['firstName'] = this.firstName;
+    data['lastName'] = this.lastName;
+    data['email'] = this.email;
+    data['phone'] = this.phone;
+    data['photoUrl'] = this.photoUrl;
     return data;
   }
 }

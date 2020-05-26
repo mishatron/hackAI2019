@@ -52,7 +52,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                     children: <Widget>[
                       getUserAvatar(user.model.photoUrl, 80),
                       Text(
-                        user.model.name + " " + user.model.surname,
+                        user.model.firstName + " " + user.model.lastName,
                         style: getBigFont(),
                       ),
                       Padding(
@@ -88,7 +88,7 @@ class _ProfileScreenState extends BaseStatefulScreen<ProfileScreen>
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    user.model.phone,
+                                    user.model.phone ?? "",
                                     style: getMidFont(),
                                   ),
                                 )

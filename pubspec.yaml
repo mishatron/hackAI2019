@@ -29,6 +29,8 @@ dependencies:
   dio: ^3.0.4
   flutter_bloc: ^3.1.0
 #  shared_preferences: ^0.5.4+5
+  shared_preferences: ^0.5.7+2
+  cloud_firestore: ^0.13.0+1
   http: ^0.12.0+2
   get_it: ^3.0.3
   logger: any
