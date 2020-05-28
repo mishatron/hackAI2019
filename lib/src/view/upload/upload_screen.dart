@@ -150,6 +150,13 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
                                   padding: const EdgeInsets.only(top: 8.0),
                                   child: getLabelsList(),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: BaseButton(
+                                    text: "Вивантажити дані",
+                                    onClick: _viewModel.uploadData,
+                                  ),
+                                )
                               ],
                             )
                           : const Offstage(),

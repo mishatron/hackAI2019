@@ -3,6 +3,8 @@ import 'package:hackai/router/navigation_service.dart';
 import 'package:hackai/src/core/api/dio_manager.dart';
 import 'package:hackai/src/data/repositories/auth_repository.dart';
 import 'package:hackai/src/data/repositories/auth_repository_impl.dart';
+import 'package:hackai/src/data/repositories/ml/ml_repository.dart';
+import 'package:hackai/src/data/repositories/ml/ml_repository_impl.dart';
 import 'package:hackai/src/data/sources/remote/remote_datasource.dart';
 import 'package:hackai/src/data/sources/remote/remote_datasource_impl.dart';
 
@@ -31,6 +33,7 @@ class InjectorDI {
     injector.registerLazySingleton(() => NavigationService());
 
     injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl());
+    injector.registerLazySingleton<MLRepository>(() => MLRepositoryImpl());
 
     injector
         .registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl());
