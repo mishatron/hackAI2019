@@ -12,4 +12,16 @@ class MLRepositoryImpl extends MLRepository {
       return value.documentID;
     });
   }
+
+  @override
+  Future<List<DataModel>> getData() async {
+    return await Firestore.instance
+        .collection("data")
+        .getDocuments()
+        .then((value) {
+      return value.documents
+          .map((e) => DataModel.fromJsonMap(e.data)..id = e.documentID)
+          .toList();
+    });
+  }
 }

@@ -3,4 +3,5 @@ import 'package:hackai/src/domain/data_model.dart';
 
 abstract class MLRepository extends BaseRepository{
   Future<String> uploadData(DataModel model);
+  Future<List<DataModel>> getData();
 }

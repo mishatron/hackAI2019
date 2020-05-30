@@ -99,19 +99,13 @@ Future<Uint8List> getBytesFromAsset(String path, int width) async {
       .asUint8List();
 }
 
-Future<Uint8List> getDefault() async {
+Future<Uint8List> getDefault(Color color) async {
   final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
   final Canvas canvas = Canvas(pictureRecorder);
-  var empty = await getBytesFromAsset("assets/empty_marker_remark.png", 150);
-  var defaultAvatar = await getBytesFromAsset("assets/default_avatar.png", 100);
+  var empty = await getBytesFromAsset("assets/marker.png", 100);
   var imageEmpty = await loadImage(empty);
-  var imageAvatar = await loadImage(defaultAvatar);
-  Path path = Path()
-    ..addOval(Rect.fromLTWH(25.0, 12.0, imageAvatar.width.toDouble(),
-        imageAvatar.height.toDouble()));
-  canvas.drawImage(imageEmpty, new Offset(0.0, 0.0), new Paint());
-  canvas.clipPath(path);
-  canvas.drawImage(imageAvatar, new Offset(25.0, 12.0), new Paint());
+  canvas.drawImage(imageEmpty, new Offset(0.0, 0.0), Paint()
+    ..colorFilter = ColorFilter.mode(color, BlendMode.srcATop));
   final img = await pictureRecorder.endRecording().toImage(150, 150);
   final data = await img.toByteData(format: ui.ImageByteFormat.png);
   return data.buffer.asUint8List();
@@ -125,7 +119,7 @@ Future<ui.Image> loadImage(List<int> img) async {
   return completer.future;
 }
 
-Future<Uint8List> getUserAvatar(String urlAvatar) async {
+Future<Uint8List> getCompanyMarker(String urlAvatar) async {
   final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
   final Canvas canvas = Canvas(pictureRecorder);
   var request = await http.get(urlAvatar);
