@@ -8,6 +8,7 @@ import 'package:hackai/src/core/provider/base_viewmodel.dart';
 import 'package:hackai/src/data/repositories/ml/ml_repository.dart';
 import 'package:hackai/src/di/dependency_injection.dart';
 import 'package:hackai/src/domain/data_model.dart';
+import 'package:hackai/src/view/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mlkit/mlkit.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -21,14 +22,7 @@ class Category {
 }
 
 class UploadViewModel extends BaseViewModel {
-  final List<Category> availableCategories = [
-    Category("vehicle", "Авто", Colors.blueAccent),
-    Category("fire", "Вогонь", Colors.orange),
-    Category("plant", "Рослина", Colors.greenAccent),
-    Category("crash", "ДТП", Colors.redAccent),
-    Category("collision", "ДТП", Colors.redAccent),
-    Category("room", "Кімната", Colors.yellow),
-  ];
+
   final MLRepository _mlRepository = injector.get();
 
   LatLng _location;

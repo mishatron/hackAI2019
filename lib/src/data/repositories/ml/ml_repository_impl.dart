@@ -24,4 +24,12 @@ class MLRepositoryImpl extends MLRepository {
           .toList();
     });
   }
+
+  Future<List<DataModel>> getCategory(String text) async {
+    QuerySnapshot qs = await Firestore.instance
+        .collection("data")
+        .where("text", isEqualTo: text)
+        .getDocuments();
+    return qs.documents.map((e) => DataModel.fromJsonMap(e.data)).toList();
+  }
 }

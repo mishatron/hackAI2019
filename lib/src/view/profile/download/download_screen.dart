@@ -5,6 +5,7 @@ import 'package:hackai/src/core/ui/base_statefull_screen.dart';
 import 'package:hackai/src/core/ui/base_statefull_widget.dart';
 import 'package:hackai/src/core/ui/ui_utils.dart';
 import 'package:hackai/src/view/custom/BaseButton.dart';
+import 'package:hackai/src/view/profile/download/download_bloc.dart';
 
 class DownloadScreen extends BaseStatefulWidget {
   @override
@@ -18,6 +19,8 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
   Widget buildAppbar() {
     return getAppBar(context, "Завантаження набору", leading: getBack());
   }
+
+  DownloadBloc _bloc = DownloadBloc();
 
   @override
   Widget buildBody() {
@@ -82,7 +85,10 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _bloc.getJson((ModalRoute.of(context).settings.arguments as Bundle)
+                          .getString("category", defaultValue: ""));
+                    },
                   ),
                 )
               ],
@@ -91,5 +97,12 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
         ],
       ),
     );
+  }
+
+
+  @override
+  void dispose() {
+    _bloc.close();
+    super.dispose();
   }
 }

@@ -8,6 +8,8 @@ import 'package:hackai/src/core/ui/base_statefull_widget.dart';
 import 'package:hackai/src/core/ui/ui_utils.dart';
 import 'package:hackai/src/di/dependency_injection.dart';
 import 'package:hackai/src/view/custom/BaseButton.dart';
+import 'package:hackai/src/view/upload/upload_view_model.dart';
+import 'package:hackai/src/view/utils/utils.dart';
 
 class CategoriesScreen extends BaseStatefulWidget {
   @override
@@ -22,13 +24,13 @@ class CategoriesScreenState extends BaseStatefulScreen<CategoriesScreen> {
     return getAppBar(context, "Категорії", leading: getBack());
   }
 
-  Widget getItem(String text) {
+  Widget getItem(Category cat) {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: InkWell(
         onTap: () {
           var bundle = Bundle();
-          bundle.putString("category", text);
+          bundle.putString("category", cat.text);
           injector<NavigationService>()
               .pushNamed(downloadRoute, arguments: bundle);
         },
@@ -42,7 +44,7 @@ class CategoriesScreenState extends BaseStatefulScreen<CategoriesScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      text,
+                      cat.ukrText,
                       style: getMidFont(),
                     ),
                   ),
@@ -65,12 +67,7 @@ class CategoriesScreenState extends BaseStatefulScreen<CategoriesScreen> {
               child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: <Widget>[
-                getItem("Пожежі"),
-                getItem("Рослини"),
-                getItem("Авто"),
-                getItem("ДТП"),
-              ],
+            children: availableCategories.map((e) => getItem(e)).toList(),
             ),
           )),
         ),
