@@ -50,6 +50,7 @@ dependencies:
   geolocator: ^5.2.0
   flutter_file_dialog: ^0.0.5
   flutter_launcher_icons: ^0.7.5
+  fl_chart: ^0.10.0
   mlkit: ^0.15.1
 #  mlkit:
 #    path: "lib/src/libs/flutter_mlkit-master"
