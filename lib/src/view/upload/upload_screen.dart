@@ -125,11 +125,16 @@ class _UploadScreenState extends BaseStatefulScreen<UploadScreen> {
                                     style: getMidFontBold(),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "${_viewModel.location.latitude}, ${_viewModel.location.longitude} ",
-                                    style: getMidFont(),
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      "${_viewModel.location.latitude}, ${_viewModel.location.longitude} ",
+                                      style: getMidFont(),
+                                      maxLines: 1,
+                                      softWrap: false,
+                                      overflow: TextOverflow.fade,
+                                    ),
                                   ),
                                 ),
                               ],

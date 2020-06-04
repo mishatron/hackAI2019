@@ -6,6 +6,7 @@ import 'package:hackai/src/core/ui/base_statefull_widget.dart';
 import 'package:hackai/src/core/ui/ui_utils.dart';
 import 'package:hackai/src/view/custom/BaseButton.dart';
 import 'package:hackai/src/view/profile/download/download_bloc.dart';
+import 'package:hackai/src/view/upload/upload_view_model.dart';
 
 class DownloadScreen extends BaseStatefulWidget {
   @override
@@ -20,10 +21,15 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
     return getAppBar(context, "Завантаження набору", leading: getBack());
   }
 
-  DownloadBloc _bloc = DownloadBloc();
+  final DownloadBloc _bloc = DownloadBloc();
+  Category _category;
 
   @override
   Widget buildBody() {
+    if (_category == null)
+      _category = ((ModalRoute.of(context).settings.arguments as Bundle)
+          .getDynamic("category") as Category);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -39,8 +45,9 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                      (ModalRoute.of(context).settings.arguments as Bundle)
-                          .getString("category", defaultValue: ""), style: getBigFont(),),
+                    _category.ukrText,
+                    style: getBigFont(),
+                  ),
                 )
               ],
             ),
@@ -86,8 +93,7 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
-                      _bloc.getJson((ModalRoute.of(context).settings.arguments as Bundle)
-                          .getString("category", defaultValue: ""));
+                      _bloc.getJson(_category.text);
                     },
                   ),
                 )
@@ -98,7 +104,6 @@ class DownloadScreenState extends BaseStatefulScreen<DownloadScreen> {
       ),
     );
   }
-
 
   @override
   void dispose() {

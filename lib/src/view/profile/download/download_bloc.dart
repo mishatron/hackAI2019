@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:hackai/src/core/bloc/base_bloc.dart';
 import 'package:hackai/src/core/bloc/base_bloc_state.dart';
 import 'package:hackai/src/core/bloc/content_loading_state.dart';
@@ -23,8 +24,10 @@ class DownloadBloc extends BaseBloc<BaseBlocState, DoubleBlocState> {
      _mlRepository.getCategory(text).then((value) async {
        var json = JsonEncoder().convert(value);
        final Directory directory = await getApplicationDocumentsDirectory();
-       final File file = File('${directory.path}/json.txt');
+       final File file = File('${directory.path}/$text\_${DateTime.now().millisecondsSinceEpoch}.json');
        await file.writeAsString(json);
+       final params = SaveFileDialogParams(sourceFilePath: file.path);
+       final filePath = await FlutterFileDialog.saveFile(params: params);
      });
   }
 }

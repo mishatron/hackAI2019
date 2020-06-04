@@ -48,6 +48,7 @@ dependencies:
   path_provider: ^1.6.10
   permission_handler: ^4.0.0
   geolocator: ^5.2.0
+  flutter_file_dialog: ^0.0.5
   mlkit: ^0.15.1
 #  mlkit:
 #    path: "lib/src/libs/flutter_mlkit-master"

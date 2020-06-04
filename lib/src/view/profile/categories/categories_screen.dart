@@ -30,7 +30,7 @@ class CategoriesScreenState extends BaseStatefulScreen<CategoriesScreen> {
       child: InkWell(
         onTap: () {
           var bundle = Bundle();
-          bundle.putString("category", cat.text);
+          bundle.putDynamic("category", cat);
           injector<NavigationService>()
               .pushNamed(downloadRoute, arguments: bundle);
         },
